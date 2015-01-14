@@ -1,0 +1,18 @@
+= simple_form_for @duty do |f|
+  %div.toggle_display
+    = f.input :name
+    = f.input :start_day,  as: :string, :input_html => { class: 'datepicker' }
+    = f.input :start_time, as: :string, :input_html => { class: 'timepicker' }
+    = f.input :end_day,    as: :string, :input_html => { class: 'datepicker' }
+    = f.input :end_time,   as: :string, :input_html => { class: 'timepicker' }
+    = f.input :repeat, as: :select, collection:  repeat_duty_options_for_select, selected: 1
+    = f.input :repeat_till, as: :string,  :input_html => { class: 'datepicker' }
+    / = f.input :assign_to_coaches, collection: current_user.group_coaches , as: :check_boxes
+    / = f.collection_check_boxes, :options
+    / = f.input :assign_to_coaches, collection: current_user.group_coaches , as: :check_boxes
+
+    = f.input :assign_to_coach_ids, as: :check_boxes, collection: coach_options_for_select( )
+    / = f.input :assign_to_coach_ids, as: :check_boxes, collection: ["1", "2"]
+    = f.input :urgency
+    = f.input :notes
+    = f.button :submit
